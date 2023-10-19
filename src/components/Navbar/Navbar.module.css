@@ -1,0 +1,22 @@
+.nav {
+  grid-area: n;
+  background: #f2d7ff;
+  padding: 20px;
+}
+
+.item {
+  color: white  !important;
+}
+
+.item a.activeLink {
+  color: red  !important;
+}
+
+
+.plus {
+  font-weight: 800;
+}
+
+.friends {
+  display: flex;
+}
