@@ -1,18 +1,23 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
+} from "../../../redux/state";
 
 const MyPosts = (props) => {
-  console.log("props in MyPosts=", props);
   let textareaRef = React.createRef();
 
   let addPostHandler = () => {
-    props.addPost();
+    let action = addPostActionCreator();
+    props.dispatch(action);
   };
 
   let onChangeHandler = () => {
     let textareaValue = textareaRef.current.value;
-    props.updateNewPostText(textareaValue);
+    let action = updateNewPostTextActionCreator(textareaValue);
+    props.dispatch(action);
   };
 
   return (
