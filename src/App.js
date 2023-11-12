@@ -7,7 +7,7 @@ import Profile from "./components/Profile/Profile";
 import React from "react";
 
 const App = (props) => {
-  console.log('props in App=',props)
+  console.log("props in App=", props);
 
   return (
     <BrowserRouter>
@@ -30,8 +30,10 @@ const App = (props) => {
               path="/dialogs"
               element={
                 <Dialogs
+                  dispatch={props.dispatch}
                   dialogsList={props.state.dialogsPage.dialogsList}
                   messagesList={props.state.dialogsPage.messagesList}
+                  newMessageBody={props.state.dialogsPage.newMessageBody}
                 />
               }
             />
@@ -39,8 +41,10 @@ const App = (props) => {
               path="/"
               element={
                 <Dialogs
+                  dispatch={props.dispatch}
                   dialogsList={props.state.dialogsPage.dialogsList}
                   messagesList={props.state.dialogsPage.messagesList}
+                  newMessageBody={props.state.dialogsPage.newMessageBody}
                 />
               }
             />
