@@ -5,10 +5,10 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import React from "react";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
-  console.log("props in App=", props);
-
+  console.log("props in App", props);
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -16,35 +16,29 @@ const App = (props) => {
         <Navbar friends={props.state.sidebar.friends} />
         <div className="app-wrapper-content ">
           <Routes>
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  newPostText={props.state.profilePage.newPostText}
-                  postsList={props.state.profilePage.postsList}
-                  dispatch={props.dispatch}
-                />
-              }
-            />
+            <Route path="/profile" element={<Profile store={props.store} />} />
             <Route
               path="/dialogs"
               element={
-                <Dialogs
-                  dispatch={props.dispatch}
-                  dialogsList={props.state.dialogsPage.dialogsList}
-                  messagesList={props.state.dialogsPage.messagesList}
-                  newMessageBody={props.state.dialogsPage.newMessageBody}
+                <DialogsContainer
+                  store={props.store}
+                  // dispatch={props.dispatch}
+                  // dialogsList={props.state.dialogsPage.dialogsList}
+                  // messagesList={props.state.dialogsPage.messagesList}
+                  // newMessageBody={props.state.dialogsPage.newMessageBody}
                 />
               }
             />
             <Route
               path="/"
               element={
-                <Dialogs
-                  dispatch={props.dispatch}
-                  dialogsList={props.state.dialogsPage.dialogsList}
-                  messagesList={props.state.dialogsPage.messagesList}
-                  newMessageBody={props.state.dialogsPage.newMessageBody}
+                <DialogsContainer
+                  store={props.store}
+
+                  // dispatch={props.dispatch}
+                  // dialogsList={props.state.dialogsPage.dialogsList}
+                  // messagesList={props.state.dialogsPage.messagesList}
+                  // newMessageBody={props.state.dialogsPage.newMessageBody}
                 />
               }
             />

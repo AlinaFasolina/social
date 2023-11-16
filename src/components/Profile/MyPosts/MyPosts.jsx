@@ -1,23 +1,20 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-} from "../../../redux/state";
+
 
 const MyPosts = (props) => {
+  console.log("props in MyPosts",props);
+
   let textareaRef = React.createRef();
 
-  let addPostHandler = () => {
-    let action = addPostActionCreator();
-    props.dispatch(action);
+  let onAddPost = () => {
+    props.addPost();
   };
 
-  let onChangeHandler = () => {
-    let textareaValue = textareaRef.current.value;
-    let action = updateNewPostTextActionCreator(textareaValue);
-    props.dispatch(action);
+  let onPostChange= () => {
+    let text = textareaRef.current.value;
+    props.updateNewPostText(text);
   };
 
   return (
@@ -27,13 +24,13 @@ const MyPosts = (props) => {
       <div className={classes.my_posts}>
         <div>
           <textarea
-            onChange={onChangeHandler}
+            onChange={onPostChange}
             ref={textareaRef}
             value={props.newPostText}
           ></textarea>
         </div>
         <div>
-          <button onClick={addPostHandler}>Add post</button>
+          <button onClick={onAddPost}>Add post</button>
         </div>
       </div>
 

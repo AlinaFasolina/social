@@ -1,18 +1,14 @@
 import React from "react";
 import classes from "./Profile.module.css";
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
-  console.log('props in Profile', props)
+  console.log("props in Profile", props);
   return (
     <div className={classes.content}>
       <ProfileInfo />
-      <MyPosts
-        dispatch={props.dispatch}
-        newPostText={props.newPostText}
-        postsList={props.postsList}
-      />
+      <MyPostsContainer store={props.store} />
     </div>
   );
 };

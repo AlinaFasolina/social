@@ -1,33 +1,18 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
-import {
-  updateNewMessageBodyCreator,
-  sendMessageCreator,
-} from "../../redux/state";
-
-const Message = (props) => {
-  return <div className={classes.message}>{props.message}</div>;
-};
+import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  console.log('props in DIALOGS',props)
-  // let textareaRef = React.createRef();
+  console.log('Dialogs presentational component props',props)
+  let textareaRef = React.createRef();
 
-  let changeMsgHandler = (e) => {
-    // let text = textareaRef.current.alue;
-    let text = e.target.value;
-
-    console.log("text in dialog = ", text);
-    let action = updateNewMessageBodyCreator(text);
-    console.log("action in dialog = ", action);
-
-    props.dispatch(action);
+  let onSendBtnHandler = () => {
+    props.sendBtnHandler();
   };
-
-  let sendBtnHandler = () => {
-    let action = sendMessageCreator();
-    props.dispatch(action);
+  let changeMsgHandler = () => {
+    let text = textareaRef.current.value;
+    props.changeMsg(text);
   };
 
   return (
@@ -46,12 +31,12 @@ const Dialogs = (props) => {
       </div>
       <div className={classes.sendWrapper}>
         <textarea
-          // ref={textareaRef}
+          ref={textareaRef}
           placeholder="Enter your message"
           value={props.newMessageBody}
           onChange={changeMsgHandler}
         ></textarea>
-        <button onClick={sendBtnHandler} className={classes.sendBtn}>
+        <button onClick={onSendBtnHandler} className={classes.sendBtn}>
           Send message
         </button>
       </div>
