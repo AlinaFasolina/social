@@ -3,12 +3,19 @@ import reportWebVitals from "./reportWebVitals";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import store from "./redux/redux-store";
+import { MyProvider } from "./StoreContext";
 
 let rerenderEntireTree = (state) => {
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(
     <React.StrictMode>
-      <App state={store.getState()} dispatch={store.dispatch.bind(store)} store={store}/>
+      <MyProvider store={store}>
+        <App
+          // state={store.getState()}
+          // dispatch={store.dispatch.bind(store)}
+          // store={store}
+        />
+      </MyProvider>
     </React.StrictMode>
   );
 };
@@ -22,12 +29,3 @@ store.subscribe(rerenderEntireTree);
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-
-function myf(){
-  console.log("this in myfunc =",this);
-  function jopa() {
-    console.log('this in jopa=',this)
-  }
-  jopa()
-}
-myf()
