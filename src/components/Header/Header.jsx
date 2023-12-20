@@ -4,7 +4,7 @@ import classes from './Header.module.css';
 const Header = () => {
   return (
     <header className={classes.header}>
-      <img src="https://img.freepik.com/darmowe-wektory/ptak-kolorowe-logo-wektor-gradientu_343694-1365.jpg"></img>
+      <img alt="" src="https://img.freepik.com/darmowe-wektory/ptak-kolorowe-logo-wektor-gradientu_343694-1365.jpg"></img>
     </header>
   );
 };

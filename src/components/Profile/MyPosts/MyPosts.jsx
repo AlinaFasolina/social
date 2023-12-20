@@ -14,7 +14,7 @@ const MyPosts = (props) => {
 
   let onPostChange= () => {
     let text = textareaRef.current.value;
-    props.updateNewPostText(text);
+    props.onChangeHandler(text);
   };
 
   return (
